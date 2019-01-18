@@ -25,4 +25,16 @@ public class AtmTest {
 		// Assert
 		assertEquals(200, actual);
 	}
+
+	@Test
+	public void shouldIncreaseWhenMoneyIsDeposited() {
+		// Arrange
+		Atm underTest = new Atm(200);
+		// Act
+		int originalBalance = underTest.checkBalance();
+		underTest.deposit();
+		int newBalance = underTest.checkBalance();
+		// Assert
+		assertEquals(originalBalance + 50, newBalance);
+	}
 }

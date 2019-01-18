@@ -1,7 +1,7 @@
 package atm;
 
 public class Atm {
-	
+
 	private int balance;
 
 	public Atm(int balance) {
@@ -10,6 +10,11 @@ public class Atm {
 
 	public int checkBalance() {
 		return balance;
+	}
+
+	public void deposit() {
+		balance += 50;
+
 	}
 
 }

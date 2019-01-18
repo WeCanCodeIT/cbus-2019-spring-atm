@@ -19,3 +19,7 @@
 1. Test first method (`checkBalance`) driven by UI creation
 1. Get rid of all compilation errors by generating code
 1. Static imports (ctrl + shift + M)
+
+### Alan
+1. From master, create a new branch off of dev `git checkout -b deposit-method dev`
+1. Test drive the deposit method...notice the name of my branch describes the feature I am building (helps for team communication)
