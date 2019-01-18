@@ -19,3 +19,19 @@
 1. Test first method (`checkBalance`) driven by UI creation
 1. Get rid of all compilation errors by generating code
 1. Static imports (ctrl + shift + M)
+1. Test for $100 balance
+1. Test for $200 balance
+1. Refactor
+
+### Git environment setup
+
+1. `git init`
+1. `git add .`
+1. `git commit -m "Initial project setup"`
+1. ``
+
+### Feature Branching
+
+#### Donny
+
+1. Create feature branch from `dev`
