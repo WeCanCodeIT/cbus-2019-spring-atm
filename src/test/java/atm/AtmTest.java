@@ -25,7 +25,7 @@ public class AtmTest {
 		// Assert
 		assertEquals(200, actual);
 	}
-	
+
 	@Test
 	public void shouldWithdraw() {
 		// Arrange
@@ -35,7 +35,7 @@ public class AtmTest {
 		// Assert
 		assertEquals(50, withdrawalAmount);
 	}
-	
+
 	@Test
 	public void shouldDecreaseWhenMoneyIsWithdrawn() {
 		// Arrange
@@ -46,5 +46,17 @@ public class AtmTest {
 		int newBalance = underTest.checkBalance();
 		// Assert
 		assertEquals(originalBalance - 50, newBalance);
+	}
+
+	@Test
+	public void shouldIncreaseWhenMoneyIsDeposited() {
+		// Arrange
+		Atm underTest = new Atm(200);
+		// Act
+		int originalBalance = underTest.checkBalance();
+		underTest.deposit();
+		int newBalance = underTest.checkBalance();
+		// Assert
+		assertEquals(originalBalance + 50, newBalance);
 	}
 }
