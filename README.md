@@ -23,3 +23,5 @@
 ### Alan
 1. From master, create a new branch off of dev `git checkout -b deposit-method dev`
 1. Test drive the deposit method...notice the name of my branch describes the feature I am building (helps for team communication)
+1. `add`, `commit` and `push`
+1. Place a Pull Request on GitHub
