@@ -29,7 +29,7 @@
 1. `git commit -m "Initial project setup"`
 1. `git remote add origin https://github.com/WeCanCodeIT/cbus-2019-spring-atm` \*
 1. `git push -u origin master` \*
-1. `make `dev` branch: `git checkout -b dev`
+1. make `dev` branch: `git checkout -b dev`
 1. push `dev` to GitHub: `git push -u origin dev`
 
 \* - copied from GitHub
@@ -53,7 +53,7 @@
 1. `add`, `commit` and `push`
 1. Place a Pull Request on GitHub
 
-### Stretch Tasks
+## Stretch Tasks
 
 Make sure to Test Drive all code
 1. Withdraw/deposit methods that accept custom amounts
