@@ -47,7 +47,7 @@
 1. Pull Request on GitHub (Make sure the PR is to `dev` and not `master`)
 1. Clear merge conflicts as necessary
 
-### Alan
+#### Alan
 1. From master, create a new branch off of dev `git checkout -b deposit-method dev`
 1. Test drive the deposit method...notice the name of my branch describes the feature I am building (helps for team communication)
 1. `add`, `commit` and `push`
@@ -61,3 +61,13 @@ Make sure to Test Drive all code
 1. User cannot withdraw more than is available in `balance`
 1. User must enter a correct Personal Identification Number (PIN) to access ATM options
 1. User only has three tries to enter PIN
+
+## Next Steps
+
+1. Application loop
+1. Refactor `Atm` class to `Account` class
+1. Include `Collection` of `Account`s in `Atm` class
+1. List all current balances of all `Account`s
+1. Withdraw from one `Account`
+1. Transfer from one `Account` to another
+1. Add `PIN` access to `Atm`
