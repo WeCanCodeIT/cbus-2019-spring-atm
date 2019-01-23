@@ -26,7 +26,7 @@ public class Account {
 	}
 
 	public String getAccountNumber() {
-		return "0";
+		return accountNumber;
 	}
 
 }
