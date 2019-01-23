@@ -7,56 +7,17 @@ import org.junit.Test;
 public class AtmTest {
 
 	@Test
-	public void shouldReturnOneHundredForBalance() {
+	public void shouldBeAbleToAddAccount() {
 		// Arrange
-		Atm underTest = new Atm(100);
+		Atm underTest = new Atm();
+		Account acctToAdd = new Account("1", 200);
+		
 		// Act
-		int actual = underTest.checkBalance();
+		int initialAccounts = underTest.getAccountsLength();
+		underTest.addAccount(acctToAdd); // Add account to Atm instance
+		int accountsAfterAddition = underTest.getAccountsLength();
+		
 		// Assert
-		assertEquals(100, actual);
-	}
-
-	@Test
-	public void shouldReturnTwoHundredForBalance() {
-		// Arrange
-		Atm underTest = new Atm(200);
-		// Act
-		int actual = underTest.checkBalance();
-		// Assert
-		assertEquals(200, actual);
-	}
-
-	@Test
-	public void shouldWithdraw() {
-		// Arrange
-		Atm underTest = new Atm(200);
-		// Act
-		int withdrawalAmount = underTest.withdraw();
-		// Assert
-		assertEquals(50, withdrawalAmount);
-	}
-
-	@Test
-	public void shouldDecreaseWhenMoneyIsWithdrawn() {
-		// Arrange
-		Atm underTest = new Atm(200);
-		// Act
-		int originalBalance = underTest.checkBalance();
-		underTest.withdraw();
-		int newBalance = underTest.checkBalance();
-		// Assert
-		assertEquals(originalBalance - 50, newBalance);
-	}
-
-	@Test
-	public void shouldIncreaseWhenMoneyIsDeposited() {
-		// Arrange
-		Atm underTest = new Atm(200);
-		// Act
-		int originalBalance = underTest.checkBalance();
-		underTest.deposit();
-		int newBalance = underTest.checkBalance();
-		// Assert
-		assertEquals(originalBalance + 50, newBalance);
+		assertEquals(initialAccounts + 1, accountsAfterAddition); // check that there is a new account in Atm
 	}
 }

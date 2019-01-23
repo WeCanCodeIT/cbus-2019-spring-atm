@@ -1,26 +1,17 @@
 package atm;
 
+import java.util.HashMap;
+
 public class Atm {
+	
+	HashMap<String, Account> accounts = new HashMap<String, Account>();
 
-	private int balance;
-
-	public Atm(int balance) {
-		this.balance = balance;
+	public void addAccount(Account acctToAdd) {
+		accounts.put(acctToAdd.getAccountNumber(), acctToAdd);
 	}
 
-	public int checkBalance() {
-		return balance;
-	}
-
-	public int withdraw() {
-		int withdrawalAmount = 50;
-		balance -= withdrawalAmount;
-		return withdrawalAmount;
-	}
-
-	public void deposit() {
-		balance += 50;
-
+	public int getAccountsLength() {
+		return accounts.size();
 	}
 
 }
