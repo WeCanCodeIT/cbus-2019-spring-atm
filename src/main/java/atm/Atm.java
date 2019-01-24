@@ -18,4 +18,8 @@ public class Atm {
 		return accounts.size();
 	}
 
+	public Account getAccount(String acctToGet) {
+		return accounts.get(acctToGet);
+	}
+
 }

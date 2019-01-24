@@ -20,4 +20,15 @@ public class AtmTest {
 		// Assert
 		assertEquals(initialAccounts + 1, accountsAfterAddition); // check that there is a new account in Atm
 	}
+	
+	@Test
+	public void shouldGetSingleAccount() {
+		Atm underTest = new Atm();
+		Account account = new Account("1", 200);
+		
+		underTest.addAccount(account); // Add an Account to underTest so we can 'get' it
+		Account actual = underTest.getAccount("1");
+		
+		assertEquals(account, actual);
+	}
 }

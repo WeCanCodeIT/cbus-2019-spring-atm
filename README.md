@@ -64,10 +64,10 @@ Make sure to Test Drive all code
 
 ## Next Steps
 
-1. Application loop
-1. Refactor `Atm` class to `Account` class
-1. Include `Collection` of `Account`s in `Atm` class
-1. List all current balances of all `Account`s
+1. Application loop (done)
+1. Refactor `Atm` class to `Account` class (done)
+1. Include `Collection` of `Account`s in `Atm` class (done. Tested by `addAccount` in `Atm`)
+1. List all current balances of all `Account`s (done)
 1. Withdraw from one `Account`
 1. Transfer from one `Account` to another
 1. Add `PIN` access to `Atm`
