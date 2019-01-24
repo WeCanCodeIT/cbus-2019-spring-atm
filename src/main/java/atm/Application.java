@@ -12,11 +12,25 @@ public class Application {
 		atm.addAccount(new Account("1", 100));
 		atm.addAccount(new Account("2", 200));
 		atm.addAccount(new Account("3", 300));
+		
+		// create PIN to check against
+		String defaultUserPin = "1234";
+
 
 		boolean foo = true;
 
-		System.out.println("Hello, what would you like to do");
+		// Change greeting to indicate the need for a PIN
+		// System.out.println("Hello, what would you like to do");
+		System.out.println("Hello, please enter your PIN to access the ATM:");
 		while (foo) {
+			// Get user input for PIN
+			String userPin = input.nextLine();
+			// Add a nested while loop to check for the matching PIN - continue looping until PINs match
+			while (!userPin.equals(defaultUserPin)) {
+				// Prompt user for new PIN
+				System.out.println("You have entered an incorrect PIN. Please try again...");
+				userPin = input.nextLine();
+			}
 			System.out.println("Please select an option:");
 			System.out.println("1. Check All Balances");
 			System.out.println("2. Withdraw");
@@ -98,7 +112,7 @@ public class Application {
 				}
 				String userAccountFrom = input.nextLine();
 				Account transferAccountFrom = atm.getAccount(userAccountFrom);
-				
+
 				// Prompt the user for an account to transfer to
 				System.out.println("Which Account would you like to transfer to:");
 				for (Account account : atm.getAccounts().values()) {
@@ -106,15 +120,16 @@ public class Application {
 				}
 				String userAccountTo = input.nextLine();
 				Account transferAccountTo = atm.getAccount(userAccountTo);
-				
-				// Now - Test Drive the creation of the transfer method in the Atm class and then include below
+
+				// Now - Test Drive the creation of the transfer method in the Atm class and
+				// then include below
 				atm.transfer(transferAccountFrom, transferAccountTo);
-				
+
 				System.out.println("Transfer complete. Current balances:");
 				for (Account account : atm.getAccounts().values()) {
 					System.out.println(account.getAccountNumber() + " current balance: " + account.checkBalance());
 				}
-				
+
 				break;
 			case "6":
 				foo = false;
