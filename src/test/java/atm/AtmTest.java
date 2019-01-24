@@ -31,4 +31,20 @@ public class AtmTest {
 		
 		assertEquals(account, actual);
 	}
+	
+	@Test
+	public void shouldTransferBetweenAccounts() {
+		// Set up an Atm and two Accounts to transfer between
+		Atm underTest = new Atm();
+		Account transferFrom = new Account("1", 100);
+		Account transferTo = new Account("2", 200);
+		
+		// Perform the transfer
+		underTest.transfer(transferFrom, transferTo);
+		
+		// Assert that transferFrom has had money withdrawn
+		assertEquals(50, transferFrom.checkBalance());
+		// Assert that transferTo has had money deposited
+		assertEquals(250, transferTo.checkBalance());
+	}
 }
