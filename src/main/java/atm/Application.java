@@ -16,25 +16,27 @@ public class Application {
 		// create PIN to check against
 		String defaultUserPin = "1234";
 
-
-		boolean foo = true;
+		boolean sessionActive = true;
 
 		// Change greeting to indicate the need for a PIN
 		// System.out.println("Hello, what would you like to do");
 		System.out.println("Hello, please enter your PIN to access the ATM:");
-		while (foo) {
-			// Get user input for PIN
-			String userPin = input.nextLine();
+
+		// Get user input for PIN
+		String userPin = input.nextLine();
+		
+		while (sessionActive) {
 			// Add a nested while loop to check for the matching PIN - continue looping until PINs match
 			while (!userPin.equals(defaultUserPin)) {
 				// Prompt user for new PIN
 				System.out.println("You have entered an incorrect PIN. Please try again...");
 				userPin = input.nextLine();
 			}
+			
 			System.out.println("Please select an option:");
 			System.out.println("1. Check All Balances");
-			System.out.println("2. Withdraw");
-			System.out.println("3. Deposit");
+			System.out.println("2. Withdraw from single account");
+			System.out.println("3. Deposit from single account");
 			System.out.println("4. Add an Account");
 			System.out.println("5. Transfer between accounts");
 			System.out.println("6. Exit");
@@ -45,20 +47,12 @@ public class Application {
 			case "1":
 				Collection<Account> userAccounts = atm.getAccounts().values();
 				System.out.println("Your Account balances are as follows:");
-				for (Account account : userAccounts) {
-					// Identify how many account are available, then loop through each one
-					System.out.println("Account " + account.getAccountNumber() + " has $" + account.checkBalance());
-				}
+				listAccounts(atm);
 				break;
 			case "2":
 				// To build out this case, we're going to need to access ONE Account in our Atm
 				System.out.println("Please enter the account number you would like to witdraw from:");
-				// Our enhanced for loop allows us to perform some action for EVERY item in the
-				// collection we provide
-				for (Account account : atm.getAccounts().values()) {
-					// In this case we are printing each acct # and acct balance to the console
-					System.out.println(account.getAccountNumber() + " current balance: " + account.checkBalance());
-				}
+				listAccounts(atm);
 
 				// Get acct number from the user
 				String userWithdrawalChoice = input.nextLine();
@@ -76,9 +70,7 @@ public class Application {
 				// We're going to mimic the code from withdraw since it's so similar
 				// There isn't any new logic here so we can just write out our UI - YAY!!
 				System.out.println("Please enter the account number you would like to deposit to:");
-				for (Account account : atm.getAccounts().values()) {
-					System.out.println(account.getAccountNumber() + " current balance: " + account.checkBalance());
-				}
+				listAccounts(atm);
 
 				String userDepositChoice = input.nextLine();
 
@@ -86,7 +78,7 @@ public class Application {
 				// Change this to deposit or we don't get the expected behavior
 				depositAccount.deposit();
 
-				System.out.println("You withdrew from " + depositAccount.getAccountNumber() + ". Remaining balance is: "
+				System.out.println("You deposited to " + depositAccount.getAccountNumber() + ". Updated balance is: "
 						+ depositAccount.checkBalance());
 				break;
 			case "4":
@@ -107,17 +99,13 @@ public class Application {
 			case "5":
 				// Prompt user for acct to transfer from
 				System.out.println("Which Account would you like to transfer from:");
-				for (Account account : atm.getAccounts().values()) {
-					System.out.println(account.getAccountNumber() + " current balance: " + account.checkBalance());
-				}
+				listAccounts(atm);
 				String userAccountFrom = input.nextLine();
 				Account transferAccountFrom = atm.getAccount(userAccountFrom);
 
 				// Prompt the user for an account to transfer to
 				System.out.println("Which Account would you like to transfer to:");
-				for (Account account : atm.getAccounts().values()) {
-					System.out.println(account.getAccountNumber() + " current balance: " + account.checkBalance());
-				}
+				listAccounts(atm);
 				String userAccountTo = input.nextLine();
 				Account transferAccountTo = atm.getAccount(userAccountTo);
 
@@ -126,15 +114,19 @@ public class Application {
 				atm.transfer(transferAccountFrom, transferAccountTo);
 
 				System.out.println("Transfer complete. Current balances:");
-				for (Account account : atm.getAccounts().values()) {
-					System.out.println(account.getAccountNumber() + " current balance: " + account.checkBalance());
-				}
+				listAccounts(atm);
 
 				break;
 			case "6":
-				foo = false;
+				sessionActive = false;
 				break;
 			}
+		}
+	}
+
+	private static void listAccounts(Atm atm) {
+		for (Account account : atm.getAccounts().values()) {
+			System.out.println(account.getAccountNumber() + "'s current balance: " + account.checkBalance());
 		}
 	}
 }
